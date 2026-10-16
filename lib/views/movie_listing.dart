@@ -11,6 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 1;
+  String _orderMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class _MovieListingState extends State<MovieListing> {
               if (value != null) {
                 setState(() {
                   _ticketQuantity = value;
-                  print('Selected ticket quantity: $_ticketQuantity');
+                  debugPrint('Selected ticket quantity: $_ticketQuantity');
                 });
               }
             },
@@ -63,9 +64,25 @@ class _MovieListingState extends State<MovieListing> {
               DropdownMenuEntry(value: 5, label: '5'),
             ],
           ),
+          SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {},
-            child: const Text('Add to order'),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            ),
+            onPressed: () {
+              setState(() {
+                _orderMessage = 'You have ordered $_ticketQuantity ticket(s).';
+              });
+              debugPrint(_orderMessage);
+            },
+            child: const Text(
+              'PRESS TO ORDER',
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            _orderMessage,
+            style: TextStyle(fontSize: 14, color: Colors.white),
           ),
         ]),
       ),
