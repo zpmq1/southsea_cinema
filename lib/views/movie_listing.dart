@@ -76,7 +76,7 @@ class _MovieListingState extends State<MovieListing> {
               debugPrint(_orderMessage);
             },
             child: const Text(
-              'PRESS TO ORDER',
+              'Add to order',
             ),
           ),
           SizedBox(height: 10),
